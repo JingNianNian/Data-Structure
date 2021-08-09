@@ -71,11 +71,7 @@ void set_next() {
 	int i = 1, j = 0;
 	while(i < A) {
 		if (j == -1 || P[i] == P[j]) next[++i] = ++j;
-		else
-		{
-			if (j == next[j]) j = next[0];
-			j = next[j];
-		}
+		else j = next[j];
 	}
 }
 void KMP(/*char* s, char* p*/) {
