@@ -81,6 +81,28 @@ void preorderTraverse(Node* T, int level) {
 		preorderTraverse(T->rNode, level + 1);
 	}
 }
+// 中序遍历输出（递归）
+void midorderTraverse(Node* T, int level) {
+	if (T) {
+		preorderTraverse(T->lNode, level + 1);
+		// 输出值
+		printf(INANDOUTFORMAT, T->val);
+		printf(" level: %d\n", level);
+		// 左根右
+		preorderTraverse(T->rNode, level + 1);
+	}
+}
+// 后序遍历输出（递归）
+void postorderTraverse(Node* T, int level) {
+	if (T) {
+		// 左右根
+		preorderTraverse(T->lNode, level + 1);
+		preorderTraverse(T->rNode, level + 1);
+		// 输出值
+		printf(INANDOUTFORMAT, T->val);
+		printf(" level: %d\n", level);
+	}
+}
 /*
 // 前序遍历输出（递归）
 void PreOrderTraverse(Node* T)
