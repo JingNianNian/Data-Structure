@@ -26,7 +26,9 @@ int cmp(const void* x, const void* y) {
 
 void inputAndPretreatment() {
 	printf("请输入原字符串：");
-	scanf("%s", in);
+	//scanf 不吃空格。。。
+	gets(in);
+	// scanf("%s",in);
 	int len = strlen(in);
 	for (int i = 0; i < len; i++) {
 		if (!Nodes[in[i]].weg) NodeCnt++;
