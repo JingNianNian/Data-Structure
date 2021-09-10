@@ -2,25 +2,26 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <math.h>
 #define MAXN 100010
 #pragma warning(disable:4996)
 typedef long long ll;
 typedef unsigned long long ull;
-const int N = 1e5+10; 
+const int N = 1e5 + 10;
 inline int read() {
-	int X=0;
-	bool flag=1;
-	char ch=getchar();
-	while(ch<'0'||ch>'9') {
-		if(ch=='-') flag=0;
-		ch=getchar();
+	int X = 0;
+	bool flag = 1;
+	char ch = getchar();
+	while (ch < '0' || ch>'9') {
+		if (ch == '-') flag = 0;
+		ch = getchar();
 	}
-	while(ch>='0'&&ch<='9') {
-		X=(X<<1)+(X<<3)+ch-'0';
-		ch=getchar();
+	while (ch >= '0' && ch <= '9') {
+		X = (X << 1) + (X << 3) + ch - '0';
+		ch = getchar();
 	}
-	if(flag) return X;
-	return ~(X-1);
+	if (flag) return X;
+	return ~(X - 1);
 }
 inline void write(int x) {
 	if (x < 0) x = ~x + 1, putchar('-');
@@ -49,7 +50,7 @@ int getDigit(int num, int digitNum) {
 	}
 }
 
-void radixSort(int* arr,int length) {
+void radixSort(int* arr, int length) {
 	int max = 0;
 	int* bucket = (int*)calloc(length, sizeof(int));
 	for (int i = 0; i < length; i++)
@@ -72,14 +73,14 @@ void radixSort(int* arr,int length) {
 			int dig = getDigit(arr[o], i);
 			bucket[--radix[dig]] = arr[o];
 		}
-		for (int i = 0; i < length; i++)
+		for (int z = 0; z < length; z++)
 		{
-			arr[i] = bucket[i];
+			arr[z] = bucket[z];
 		}
 	}
 }
 
-int main(){
-	
-	return 0; 
-} 
+int main() {
+
+	return 0;
+}

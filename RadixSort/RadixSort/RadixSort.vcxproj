@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{93b94ff6-04e9-41ea-a44d-bcdaca1d9be1}</ProjectGuid>
-    <RootNamespace>BucketSort</RootNamespace>
+    <ProjectGuid>{df699ccc-56ab-4ea1-a9ff-29dffdb9233a}</ProjectGuid>
+    <RootNamespace>RadixSort</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>RadixSort</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
