@@ -1,7 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#pragma warning(disable:4996)
+#include <C++AllHeaderFiles.h>
+using namespace std;
 #pragma warning(disable:6031)
+#pragma warning(disable:4996)
+
 #pragma warning(disable:6011)
 #define INANDOUTFORMAT "%c"
 typedef char ElemType;
@@ -13,47 +14,69 @@ struct Node{
 	struct Node* lNode, * rNode;
 };
 typedef struct Node Node;
-/*
-typedef struct {
-	Node elem[10010];
-	int top;
-}Stack;
 
-void push(Stack* s, Node e) {
-	if ((*s).top > 10010) {
-		printf("栈满！\n");
-		return;
+//前序遍历二叉树（非递归）
+void preorderTraverseN(Node* H) {
+	stack<Node*> s;
+	Node* cur = NULL;
+	s.push(H);
+	while (!s.empty())
+	{
+		cur = s.top();
+		s.pop();
+		cout << cur->val << endl;
+		if (cur->rNode != NULL) {
+			s.push(cur->rNode);
+		}
+		if (cur->lNode != NULL) {
+			s.push(cur->lNode);
+		}
 	}
-
-	(*s).elem[(*s).top] = e;
-	(*s).top += 1;
 }
 
-void pop(Stack* s, Node* e) {
-	if ((*s).top < 1) {
-		printf("栈空！\n");
-		return;
+//中序遍历二叉树（非递归）
+void inorderTraverseN(Node* H) {
+	stack<Node*> s;
+	while (!s.empty() || H != NULL)
+	{
+		if (H != NULL) {
+			s.push(H);
+			H = H->lNode;
+		}
+		else
+		{
+			H = s.top();
+			s.pop();
+			cout << H->val << endl;
+			H = H->rNode;
+		}
 	}
-
-	*e = (*s).elem[(*s).top - 1];
-	(*s).top -= 1;
 }
 
-int getStackSize(Stack* s) {
-	return (*s).top;
+//后序遍历二叉树（非递归）
+void posorderTraverseN(Node* H) {
+	stack<Node*> s;
+	stack<Node*> collection;
+	Node* cur = NULL;
+	s.push(H);
+	while (!s.empty())
+	{
+		cur = s.top();
+		s.pop();
+		collection.push(cur);
+		if (cur->lNode != NULL) {
+			s.push(cur->lNode);
+		}
+		if (cur->rNode != NULL) {
+			s.push(cur->rNode);
+		}
+	}
+	while (!collection.empty())
+	{
+		cout << collection.top()->val << endl;
+		collection.pop();
+	}
 }
-
-Stack initStack() {
-	Stack s;
-	s.top = 0;
-	return s;
-}
-
-int IsEmpty(Stack s) {
-	return s.top == 0 ? 1 : 0;
-}
-*/
-
 
 //前序遍历创建二叉树
 void CreatedBiTree(Node** T) {
@@ -103,30 +126,10 @@ void postorderTraverse(Node* T, int level) {
 		printf(" level: %d\n", level);
 	}
 }
-/*
-// 前序遍历输出（递归）
-void PreOrderTraverse(Node* T)
-{
-	Stack S = initStack();   //创建并初始化堆栈S
-	while (T || !IsEmpty(S))
-	{
-		while (T)        //一直向左并将沿途节点访问（打印）后压入堆栈 
-		{
-			printf("%c\n", T->val);
-			push(&S, *T);
-			T = T->lNode;
-		}
-		if (!IsEmpty(S))
-		{
-			pop(&S,T);    //节点弹出堆栈
-			T = T->rNode;  //转向右子树
-		}
-	}
-}*/
 
 int main() {
 	Node* tree = NULL;
 	scanf("%s", input);
 	CreatedBiTree(&tree);
-	preorderTraverse(tree,1);
+	inorderTraverseN(tree);
 }
